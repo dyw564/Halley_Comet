@@ -12,10 +12,10 @@
 3.创建库  克隆库  修改库  提交 push   发PR  merge
 4.为了使项目异步进行，能够在任何时候还原到以前的状态，分支之间不相互影响。而尽量不去改变master，使master专门用来跟上游同步。
 5.pull request  
-setting
-write 
-preview
-fork 
-watch
+	setting
+	write 
+	preview
+	fork 
+	watch
 
 
