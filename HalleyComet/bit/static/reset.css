@@ -13,7 +13,6 @@ textarea { resize:none; }
 table { border-collapse:collapse; }
 body { color:#333; padding:5px 0; font:12px/20px "SimSun","宋体","Arial Narrow",HELVETICA; background:#fff;/* overflow-y:scroll;*/ }
 .clearfix:after { content:"."; display:block; height:0; visibility:hidden; clear:both; }
-.clearfix { zoom:1; }
 .clearit { clear:both; height:0; font-size:0; overflow:hidden; }
 a { color:#666; text-decoration:none; }
 a:visited { color:#666; }
@@ -43,3 +42,4 @@ p{float: left;}
 #listinfobtn{float: left;width: 160px;}
 #id_long_url{border: 1px solid; color:#666666; font-size: 14px; height: 32px; line-height: 32px; margin: 0; padding: 0 0 0 4px; width: 384px;}
 #searchbtn{width: 80px;height: 35px;font-size: 1.3em;}
+form {margin:0;position:absolute;left:25%;top:25%;}
