@@ -1,0 +1,45 @@
++
++1. 什么是git？
++答：git是一个版本控制工具，它可以将某个文件回溯到之前的状态，甚至将整个项目都回退到过去某个时间点的状态。你可以比较文件的变化细节，查出最后是谁修改了哪个地方，从而找出导致怪异问题出现的原因；又是谁在何时报告了某个功能缺陷等等，
++2. git常用的命令和对应作用
++答：git init 在工作目录中初始化新仓库
+git clone url 从现有仓库克隆
+git status    检查文件状态
+git add  fiename  跟踪文件
+git diff 查看尚未暂存的文件更新部分
+git  commit -am "" 提交更新
+git push origin master
+
+git branch   查看分支
+git branch [branchname] 创建分支
+git checkout [branchname] 切换分支
+git branch -d [branchname] 删除分支
+git branch -D [branchname] 强行删除分支
+git merge [branchbname]   合并分支
+ 
++3. git的工作原理
++答：直接记录快照，而非差异比较
+近乎所有操作都是本地执行
+时刻保持数据完整性
+多数操作仅添加数据
+文件的三种状态
+    git的工作区域，暂存区域，以及本地仓库。
+    基本的 Git 工作流程如下：
+        在工作目录中修改某些文件。
+        对修改后的文件进行快照，然后保存到暂存区域。
+        提交更新，将保存在暂存区域的文件快照永久转储到 Git 目录中。
++
++4. git分支是什么，分支有什么作用？
++答：Git 中的分支，本质上仅仅是个指向提交对象的可动指针
+    Git 中的分支实际上仅是一个包含所指提交对象校验和（40 个字符长度 SHA-1字串）的文件
+    通过分支可以对文件进行操作，合并分支
+5. gihub页面都有哪些操作，功能是什么？
+答：contributions 自己创建的公共库
+    Repositories  仓库
+    Public Activity  查看活动
+    点击Repositories 下的仓库，可以看库的内容，
+    fork 将他人的仓库fork进自己的仓库
+    右侧Pull Request  查看本仓库发来的PR
+    fork他人的仓库，修改后可以在该区域找到Pull Request 可以发PR给他本人。
+    
++
