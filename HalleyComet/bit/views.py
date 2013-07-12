@@ -42,5 +42,4 @@ def turn(req,short):
 
 
 
->>>>>>> 13e5bb7ba0bb3227c792208fd2b0c025a0ef714e
 
