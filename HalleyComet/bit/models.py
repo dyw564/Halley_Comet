@@ -1,11 +1,13 @@
 from django.db import models
 
 # Create your models here.
+class Url(models.Model):
+    long_url = models.CharField(max_length=200)
+    short_url = models.CharField(max_length=100)
 
 
-class url(models.Model):
-    long_url = CharField(max_length=200)
-    short_url = CharField(max_length=100)
+    def __unicode__(self):
+        return self.long_url
 
-    def __unicode__()
+
 
