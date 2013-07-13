@@ -2,4 +2,5 @@
 from django.http import HttpResponse,HttpResponseRedirect
 
 def index(req):
-	return HttpResponse("hello welcome")
+	return HttpResponse("hello world,welcomle to our domain")
+
