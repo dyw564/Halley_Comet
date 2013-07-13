@@ -1,4 +1,6 @@
 Halley_Comet
 ============
 
-Halley's Comet
+Develop team : TopFive
+Member : Ryan, Jachin, HanYang, WeiPanlong, CPU
+
