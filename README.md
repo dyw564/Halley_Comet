@@ -22,7 +22,12 @@ Member : Ryan, Jachin, Paul, Melon, CPU
   3. ',' 后面都要有空格
   例如：
 a = 0
+
 for i in range(5) :
+
     a += 1
+    
     i += 10
+    
     print a, i
+    
