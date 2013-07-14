@@ -8,5 +8,7 @@ Develop Project : Halley Comet
 Develop Manager : github.com/dyw564/Halley_Comet
 
 
-Member : Ryan, Jachin, HanYang, WeiPanlong, CPU
+Member : Ryan, Jachin, HanYang, Melon, CPU
 
+
+1
