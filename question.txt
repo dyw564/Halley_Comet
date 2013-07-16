@@ -6,19 +6,24 @@
 的原因；又是谁在何时报告了某个功能缺陷等等，
 +2. git常用的命令和对应作用
 +答：git init 在工作目录中初始化新仓库
-git clone url 从现有仓库克隆
+git clone [url] 从现有仓库克隆
 git status    检查文件状态
-git add  fiename  跟踪文件
+git add  [fiename]  跟踪文件
 git diff 查看尚未暂存的文件更新部分
 git  commit -am "" 提交更新
+    -a 忽略了add加的追踪，提交所有更新
+    -m 提交说明的方式
 git push origin master
+
+git rm [filename] 删除文件
+git mv [filename] [refilename] 重命名
 
 git branch   查看分支
 git branch [branchname] 创建分支
 git checkout [branchname] 切换分支
 git branch -d [branchname] 删除分支
 git branch -D [branchname] 强行删除分支
-git merge [branchbname]   合并分支
+git merge [branchbname]   合并其他分支到本分支
  
 +3. git的工作原理
 +答：直接记录快照，而非差异比较
