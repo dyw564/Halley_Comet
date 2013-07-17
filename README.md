@@ -36,4 +36,7 @@ for i in range(5) :
 
 实现功能:
     长域名缩短
+<<<<<<< HEAD
 
+=======
+>>>>>>> ef82085d1edc471feb362ea6a6f49aceb404a660
