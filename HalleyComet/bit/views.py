@@ -5,7 +5,7 @@ from bit.models import Url
 import hashlib
 
 class UrlForm(forms.Form):
-    long_url = forms.CharField(max_length = 200)
+    long_url = forms.CharField(max_length=200)
 
 def index(req):
     if req.method == "POST":
