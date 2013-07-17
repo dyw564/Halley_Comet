@@ -15,18 +15,18 @@ def index(req):
             db_url = Url.objects.filter(long_url__exact = long_url)
             if db_url:
 		short_url = db_url[0].short_url
-		return render_to_response('index.html',{'lu':lu, 'short_url':short_url, 'long_url':long_url})
+		return render_to_response('index.html',{'lu': lu, 'short_url': short_url, 'long_url': long_url})
             else:
                 longx_url = hashlib.md5(long_url).hexdigest()
-                short_url = "127.0.0.1:8000/%s"%longx_url[0:8]
+                short_url = "localhost:8000/%s"%longx_url[0:8]
                 url= Url.objects.create(long_url = long_url,short_url = short_url)
-		return render_to_response('index.html',{'lu':lu, 'short_url':short_url, 'long_url':long_url})
+		return render_to_response('index.html',{'lu': lu, 'short_url': short_url, 'long_url': long_url})
     else:
         lu = UrlForm()
-    return render_to_response('index.html',{'lu':lu})
+    return render_to_response('index.html',{'lu': lu})
 
 def turn(req,short_hash):
-    short = "127.0.0.1:8000/%s" % short_hash
+    short = "localhost:8000/%s" % short_hash
     long_url = Url.objects.filter(short_url__exact = short)
     full_long_url= long_url[0].long_url
     if full_long_url[0:4] == "http":

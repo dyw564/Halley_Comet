@@ -18,7 +18,6 @@ body { color:#333; padding:5px 0; font:12px/20px "SimSun","宋体","Arial Narrow
 a { color:#666; text-decoration:none; }
 a:visited { color:#666; }
 a:hover, a:active, a:focus { color:#ff8400; text-decoration:underline; }
-
 .hidden{visibility:hidden;}
 /**** 链接颜色 link,visited,hover*/
 /*#333 #8D0000 #333*/
@@ -27,11 +26,9 @@ a:hover, a:active, a:focus { color:#ff8400; text-decoration:underline; }
 .fe661:hover, .fe661:visited, .fe661:focus{color: #ff8400 !important;}
 span.fe661 a:link, span.fe661 a:visited{color: #e66100 !important;}
 span.fe661 a:hover, span.fe661 a:focus, span.fe661 a:active{color: #ff8400 !important;}
-
 .f9157{color: #e66100 !important;}
 span.f9157 a:link, span.f9157 a:visited{color: #915724 !important;}
 span.f9157 a:hover, span.f9157 a:focus, span.f9157 a:active{color: #ff8400 !important;}
-
 /*main*/
 .main{width: 1000px;margin: 0 auto;clear: both;}
 .listinfo{width: 200px;float: left;margin-left: 60px;font-size: 1.4em;}
@@ -44,17 +41,5 @@ p{float: left;}
 #nowinfo{width: 220px;float: left;margin-left: 60px;font-size: 1.2em;height: 120px;}
 #nowinfo a{font-size: 1.3em;}
 #listinfobtn{float: left;width: 160px;}
-#id_long_url{        
-        border: 1px solid;
-        color:#666666;
-        font-size: 14px;
-        height: 32px;
-        line-height: 32px;
-        margin: 0;
-        padding: 0 0 0 4px;
-        width: 384px;}
-#searchbtn{        
-        width: 80px;
-        height: 35px;
-        font-size: 1.3em;
-       }
+#id_long_url{border: 1px solid; color:#666666; font-size: 14px; height: 32px; line-height: 32px; margin: 0; padding: 0 0 0 4px; width: 384px;}
+#searchbtn{width: 80px;height: 35px;font-size: 1.3em;}
