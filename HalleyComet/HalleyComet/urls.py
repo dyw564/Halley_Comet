@@ -15,5 +15,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r"^index/$","bit.views.index"),
-    url(r"^index/(\w{8})/$","bit.views.turn")
+    url(r"^(\w{8})/$","bit.views.turn")
 )
