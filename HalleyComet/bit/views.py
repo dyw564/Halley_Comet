@@ -3,10 +3,31 @@ from django.shortcuts import render_to_response
 from django import forms
 from bit.models import Url
 import hashlib
-
+from django.contrib.auth.models import authenticate, login, logout
 class UrlForm(forms.Form):
     long_url = forms.CharField(max_length=200)
 
+class UserRegistForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username','password']
+        widgets = {
+            'password': forms.PasswordInput()
+        }
+
+def user_regist(req):
+    if req.method == "POST":
+        uf = UserRegistForm(req.POST)
+        if uf.is_valid():
+            username = uf.cleaned_data['username']
+            password = uf.cleaned_data['password']
+            user = User.objects.create_user(username=username,password=password)
+            user.is.staff = Ture
+            user.save()
+            return HttpResponse()
+    else:
+        uf = UserRegistForm()
+    return render_to_response('regist.html',{'uf':uf})
 def index(req):
     if req.method == "POST":
         lu = UrlForm(req.POST)
@@ -33,3 +54,5 @@ def turn(req,short_hash):
         return HttpResponseRedirect(full_long_url)
     else:
         return HttpResponseRedirect("http://%s"%full_long_url)
+
+class UserRegistForm()
