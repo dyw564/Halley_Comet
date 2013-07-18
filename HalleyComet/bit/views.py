@@ -10,10 +10,9 @@ class UrlForm(forms.Form):
     long_url = forms.CharField(max_length=200)
 
 class UserRegistForm(forms.ModelForm):
-    email = forms.CharField()
     class Meta:
         model = User
-        fields = ['username','password']
+        fields = ['username', 'password']
         widgets = {
             'password': forms.PasswordInput()
         }
@@ -29,15 +28,14 @@ def user_regist(req):
             username = uf.cleaned_data['username']
             password = uf.cleaned_data['password']
             password = hashlib.sha1(password).hexdigest()
-            email = uf.cleaned_data['email']
-            user = User.objects.create_user(username=username,password=password,email=email)
+            user = User.objects.create_user(username=username, password=password)
             user.is_staff = True
             user.save()
             if user:
                 return HttpResponseRedirect('/login/')
     else:
         uf = UserRegistForm()
-    return render_to_response('regist.html',{'uf':uf})
+    return render_to_response('regist.html', {'uf':uf})
 
 def user_login(req):
     if req.method == "POST":
@@ -46,15 +44,15 @@ def user_login(req):
             username = lf.cleaned_data['username']
             password = lf.cleaned_data['password']
             password = hashlib.sha1(password).hexdigest()
-            user = authenticate(username=username,password=password)
+            user = authenticate(username=username, password=password)
             if user:
-                login(req,user)
+                login(req, user)
                 return HttpResponseRedirect('/index/')
             else :
                 return HttpResponseRedirect('/login/')
     else :
         lf = UserLoginForm()
-    return render_to_response('login.html',{'lf':lf})
+    return render_to_response('login.html', {'lf':lf})
 
 def user_logout(req):
     logout(req)
@@ -71,13 +69,13 @@ def index(req):
             else:
                 longx_url = hashlib.md5(long_url).hexdigest()
                 short_url = "localhost:8000/%s"%longx_url[0:8]
-                url= Url.objects.create(long_url=long_url,short_url=short_url)
+                url= Url.objects.create(long_url=long_url, short_url=short_url)
                 if long_url[:4] != 'http':
                     long_url = 'http://'+long_url
-            return render_to_response('index.html',{'lu': lu, 'short_url': short_url, 'long_url': long_url})
+            return render_to_response('index.html', {'lu': lu, 'short_url': short_url, 'long_url': long_url})
     else:
         lu = UrlForm()
-    return render_to_response('index.html',{'lu': lu,'user':req.user})
+    return render_to_response('index.html',{'lu': lu, 'user':req.user})
 
 def turn(req,short_hash):
     short = "localhost:8000/%s" % short_hash
