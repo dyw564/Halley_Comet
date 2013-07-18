@@ -77,7 +77,7 @@ def index(req):
             return render_to_response('index.html',{'lu': lu, 'short_url': short_url, 'long_url': long_url})
     else:
         lu = UrlForm()
-    return render_to_response('index.html',{'lu': lu})
+    return render_to_response('index.html',{'lu': lu,'user':req.user})
 
 def turn(req,short_hash):
     short = "localhost:8000/%s" % short_hash
