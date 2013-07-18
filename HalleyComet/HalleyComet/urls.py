@@ -16,5 +16,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r"^index/$","bit.views.index"),
     url(r"^(\w{8})/$","bit.views.turn"),
-    ur(r'regist/$','bit.views.user_regist'),
+    url(r'regist/$','bit.views.user_regist'),
+    url(r'login/$','bit.views.user_login'),
 )
