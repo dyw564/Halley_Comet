@@ -3,11 +3,13 @@ from django.shortcuts import render_to_response
 from django import forms
 from bit.models import Url
 import hashlib
-from django.contrib.auth.models import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 class UrlForm(forms.Form):
     long_url = forms.CharField(max_length=200)
 
 class UserRegistForm(forms.ModelForm):
+    email = forms.CharField()
     class Meta:
         model = User
         fields = ['username','password']
@@ -15,19 +17,48 @@ class UserRegistForm(forms.ModelForm):
             'password': forms.PasswordInput()
         }
 
+class UserLoginForm(forms.Form):
+    username = forms.CharField(max_length=30)
+    password = forms.CharField(widget = forms.PasswordInput)
+
 def user_regist(req):
     if req.method == "POST":
         uf = UserRegistForm(req.POST)
         if uf.is_valid():
             username = uf.cleaned_data['username']
             password = uf.cleaned_data['password']
-            user = User.objects.create_user(username=username,password=password)
-            user.is.staff = Ture
+            password = hashlib.sha1(password).hexdigest()
+            email = uf.cleaned_data['email']
+            user = User.objects.create_user(username=username,password=password,email=email)
+            user.is_staff = True
             user.save()
-            return HttpResponse()
+            if user:
+                return HttpResponseRedirect('/login/')
     else:
         uf = UserRegistForm()
     return render_to_response('regist.html',{'uf':uf})
+
+def user_login(req):
+    if req.method == "POST":
+        lf = UserLoginForm(req.POST)
+        if lf.is_valid():
+            username = lf.cleaned_data['username']
+            password = lf.cleaned_data['password']
+            password = hashlib.sha1(password).hexdigest()
+            user = authenticate(username=username,password=password)
+            if user:
+                login(req,user)
+                return HttpResponseRedirect('/index/')
+            else :
+                return HttpResponseRedirect('/login/')
+    else :
+        lf = UserLoginForm()
+    return render_to_response('login.html',{'lf':lf})
+
+def user_logout(req):
+    logout(req)
+    return HttpResponse('logout')
+
 def index(req):
     if req.method == "POST":
         lu = UrlForm(req.POST)
@@ -55,4 +86,3 @@ def turn(req,short_hash):
     else:
         return HttpResponseRedirect("http://%s"%full_long_url)
 
-class UserRegistForm()
