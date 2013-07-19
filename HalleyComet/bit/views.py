@@ -27,9 +27,8 @@ def user_regist(req):
         if uf.is_valid():
             username = uf.cleaned_data['username']
             password = uf.cleaned_data['password']
-            password = hashlib.sha1(password).hexdigest()
             user = User.objects.create_user(username=username, password=password)
-            user.is_staff = True
+    #        user.is_staff = True
             user.save()
             if user:
                 return HttpResponseRedirect('/login/')
@@ -43,7 +42,6 @@ def user_login(req):
         if lf.is_valid():
             username = lf.cleaned_data['username']
             password = lf.cleaned_data['password']
-            password = hashlib.sha1(password).hexdigest()
             user = authenticate(username=username, password=password)
             if user:
                 login(req, user)
@@ -59,6 +57,7 @@ def user_logout(req):
     return HttpResponseRedirect('/index/')
 
 def index(req):
+    user_data = Url.objects.all()
     if req.method == "POST":
         lu = UrlForm(req.POST)
         if lu.is_valid():
@@ -72,10 +71,20 @@ def index(req):
                 url= Url.objects.create(long_url=long_url, short_url=short_url)
                 if long_url[:4] != 'http':
                     long_url = 'http://'+long_url
-            return render_to_response('index.html', {'lu': lu, 'short_url': short_url, 'long_url': long_url})
+            if req.user.is_authenticated():
+                username = req.user.username
+                user = User.objects.get(username=username)
+                short_url_ = Url.objects.get(short_url=short_url)
+                user.url_set.add(short_url_)
+                user_data = user.url_set.all()
+            return render_to_response('index.html', {'lu': lu, 'user': req.user, 'short_url': short_url, 'long_url': long_url, 'user_data': user_data})
     else:
         lu = UrlForm()
-    return render_to_response('index.html',{'lu': lu, 'user':req.user})
+    if req.user.is_authenticated():
+        username = req.user.username
+        user = User.objects.get(username=username)
+        user_data = user.url_set.all()
+    return render_to_response('index.html',{'lu': lu, 'user': req.user, 'user_data': user_data})
 
 def turn(req,short_hash):
     short = "localhost:8000/%s" % short_hash
