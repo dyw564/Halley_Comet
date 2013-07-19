@@ -1,0 +1,6 @@
+1.版本控制工具(vcs)，拥有快照功能。
+2.查看文件变动，git status
+	查看文件具体变动 git diff
+	克隆数据 git clone url
+	发布 git push -u origin master
+

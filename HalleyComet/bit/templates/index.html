@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>TestHC</title>
+<style>
+@import url('/static/reset.css');
+</style>
+</head>
+<body>
+
+<div class="main">
+	<div id="header">
+	<br />
+	<h2>哈雷彗星项目组：最佳五人组</h2>
+	<h3>Halley's Comet Project Develop Team : TopFive</h3>
+</div><hr />
+<div id="content">
+<div id="searchinfo" >
+	<form method="post" >
+	{{lu.as_p}}
+	<input id="searchbtn" type="submit" value="缩短" />
+	</form>
+</div>
+
+<div id="returninfo">
+<h3>缩短以后的域名：</h3><br />
+
+<div id="nowinfo"><a  id="d1" href="{{long_url}}" >{{short_url}}</a></div>
+
+<div>
+<input id="J_copy_clipboard_data" type="button" value="copy" />
+</div>
+<div id="nowinfobtn"></div>
+</div>
+
+</div><hr />
+<div id="footer">
+<br />
+<h2>哈雷彗星项目组：最佳五人组</h2>
+<h3>Halley's Comet Project Develop Team : TopFive</h3>
+</div>
+
+<script type="text/javascript" src="/static/ZeroClipboard.js"></script>
+<script type="text/javascript" src="/static/jquery.min.js"></script>
+<script type="text/javascript" src="/static/jzclip.js"></script>
+
+</body>
+</html>
