@@ -20,7 +20,11 @@ def index(req):
                 longx_url = hashlib.md5(long_url).hexdigest()
                 short_url = "localhost:8000/%s"%longx_url[0:8]
                 url= Url.objects.create(long_url = long_url,short_url = short_url)
-		return render_to_response('index.html',{'lu': lu, 'short_url': short_url, 'long_url': long_url})
+                if long_url[:4] == 'http':
+                    long_url = long_url
+                else :
+                    long_url = 'http://'+long_url
+                return render_to_response('index.html',{'lu': lu, 'short_url': short_url, 'long_url': long_url})
     else:
         lu = UrlForm()
     return render_to_response('index.html',{'lu': lu})
