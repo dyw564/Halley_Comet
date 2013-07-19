@@ -84,7 +84,7 @@ def index(req):
         username = req.user.username
         user = User.objects.get(username=username)
         user_data = user.url_set.all()
-    return render_to_response('index.html',{'lu': lu, 'user': req.user, 'user_data': user_data})
+    return render_to_response('index.html', {'lu': lu, 'user': req.user, 'user_data': user_data})
 
 def turn(req,short_hash):
     short = "localhost:8000/%s" % short_hash
