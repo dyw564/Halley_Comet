@@ -41,10 +41,11 @@
     </div>
     <div id="nowinfobtn"></div>
 </div>
-<div id="data">
+<div id="listdatainfo">
 {%for data in  user_data%}
-    <p><div style="float:left">{{data.long_url}}&nbsp</div><div style="float:left;" >{{data.short_url}}</div></p><br />
-
+    {{data.long_url}}&nbsp
+    {{data.short_url}}
+    <br />
 {%endfor%}
 </div>
 
