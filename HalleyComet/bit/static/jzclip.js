@@ -1,6 +1,6 @@
 
 $(function(){
-	    ZeroClipboard.setMoviePath('../static/ZeroClipboard.swf');
+	    ZeroClipboard.setMoviePath('/static/ZeroClipboard.swf');
 		    var clip = new ZeroClipboard.Client();
 			    
 		    clip.setHandCursor( true ); 
