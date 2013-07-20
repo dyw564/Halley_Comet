@@ -1,6 +1,6 @@
 #-*-coding:utf8-*-
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django import forms
 from bit.models import Url
 from django.contrib.auth import authenticate, login, logout
@@ -66,16 +66,16 @@ def index(req):
             if req.user.is_authenticated():
                 username = req.user.username
                 user = User.objects.get(username=username)
+                user_data = user.url_set.all()
                 short_url_ = Url.objects.get(short_url=short_url)
                 user.url_set.add(short_url_)
-                user_data = user.url_set.all()
             return render(req, 'index.html', {'lu': lu, 'user': req.user, 'short_url': short_url, 'long_url': long_url, 'user_data': user_data})
     else:
         lu = UrlForm()
-    if req.user.is_authenticated():
-        username = req.user.username
-        user = User.objects.get(username=username)
-        user_data = user.url_set.all()
+        if req.user.is_authenticated():
+            username = req.user.username
+            user = User.objects.get(username=username)
+            user_data = user.url_set.all()
     return render(req, 'index.html', {'lu': lu, 'user': req.user, 'user_data': user_data})
 
 def turn(req, short_hash):

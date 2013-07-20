@@ -5,7 +5,6 @@ when you run "manage.py test".
 Replace this with more appropriate tests for your application.
 """
 from django.test import TestCase
-<<<<<<< HEAD
 from bit.models import Url
 from bit.def_url import short_to_long, long_to_short
 from django.utils import unittest
