@@ -9,6 +9,7 @@
 </head>
 <body>
 <form method="post">
+{% csrf_token %}
 <table>
 {{uf.as_table}}
 </table>

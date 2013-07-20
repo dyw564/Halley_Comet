@@ -1,6 +1,6 @@
 #-*-coding:utf8-*-
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django import forms
 from bit.models import Url
 from django.contrib.auth import authenticate, login, logout
