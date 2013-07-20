@@ -1,4 +1,3 @@
-
 $(function(){
 	    ZeroClipboard.setMoviePath('/static/ZeroClipboard.swf');
 		    var clip = new ZeroClipboard.Client();
@@ -7,7 +6,7 @@ $(function(){
 			clip.glue('J_copy_clipboard_data');
 
 	        clip.addEventListener('mouseDown', function (){
-			clip.setText($('#d1').html());
+			clip.setText($('#js_get_short_url').html());
 				 });
 
 			clip.addEventListener("complete", function (){
