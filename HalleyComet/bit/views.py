@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django import forms
 from bit.models import Url
-from django.contrib.auth.models import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout
 from bit.def_url import short_to_long, long_to_short
 
 class UrlForm(forms.Form):
@@ -12,7 +12,7 @@ class UrlForm(forms.Form):
 class UserRegistForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username','password']
+        fields = ['username', 'password']
         widgets = {
             'password': forms.PasswordInput()
         }
@@ -24,12 +24,11 @@ def user_regist(req):
             username = uf.cleaned_data['username']
             password = uf.cleaned_data['password']
             user = User.objects.create_user(username=username,password=password)
-            user.is.staff = Ture
             user.save()
             return HttpResponse()
     else:
         uf = UserRegistForm()
-    return render_to_response('regist.html',{'uf':uf})
+    return render_to_response('regist.html', {'uf':uf})
 def index(req):
     if req.method == "POST":
         lu = UrlForm(req.POST)
