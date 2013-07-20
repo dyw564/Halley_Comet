@@ -34,7 +34,7 @@ def user_regist(req):
                 return HttpResponseRedirect('/login/')
     else:
         uf = UserRegistForm()
-    return render_to_response('regist.html', {'uf':uf})
+    return render(req, 'regist.html', {'uf':uf})
 
 def user_login(req):
     if req.method == "POST":
@@ -50,7 +50,7 @@ def user_login(req):
                 return HttpResponseRedirect('/login/')
     else :
         lf = UserLoginForm()
-    return render_to_response('login.html', {'lf':lf})
+    return render(req, 'login.html', {'lf':lf})
 
 def user_logout(req):
     logout(req)
