@@ -25,7 +25,7 @@
 </div><hr />
 <div id="content">
 <div id="searchinfo" >
-	<form method="post" >
+	<form method="post" >{% csrf_token %}
 	{{lu.as_p}}
 	<input id="searchbtn" type="submit" value="缩短" />
 	</form>
