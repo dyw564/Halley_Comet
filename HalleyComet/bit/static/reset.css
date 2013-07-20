@@ -22,3 +22,4 @@ p{float: left;}
 #id_long_url{border: 1px solid; color:#666666; font-size: 14px; height: 32px; line-height: 32px; margin: 0; padding: 0 0 0 4px; width: 384px;}
 #searchbtn{width: 80px;height: 35px;font-size: 1.3em;}
 form {margin:0;position:absolute;left:25%;top:25%;}
+#listdatainfo{float:left}

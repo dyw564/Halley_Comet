@@ -11,6 +11,11 @@
 
 <div class="main">
 	<div id="header">
+    <div style="float:right" >
+        <a href="/regist/" >注册</a>
+        <a href="/login/" >登录</a>
+        {{user.username}}
+    </div>
 	<div style="float:left;" ><img src="/static/t.jpg" height="60px;"/></div>
 	<div style="margin-left:140px;" >
 	<br />
@@ -28,15 +33,20 @@
 </div>
 
 <div id="returninfo">
-<h3>缩短以后的域名：</h3><br />
+    <h3>缩短以后的域名：</h3><br />
 
-<div id="nowinfo"><a  id="js_get_short_url" href="http://{{long_url}}" >{{short_url}}</a></div>
-
-
-<div>
-<input id="J_copy_clipboard_data" type="button" value="copy" />
+    <div id="nowinfo"><a  id="js_get_short_url" href="{{long_url}}" >{{short_url}}</a></div>
+    <div>
+    <input id="J_copy_clipboard_data" type="button" value="copy" />
+    </div>
+    <div id="nowinfobtn"></div>
 </div>
-<div id="nowinfobtn"></div>
+<div id="listdatainfo">
+{%for data in  user_data%}
+    {{data.long_url}}&nbsp
+    {{data.short_url}}
+    <br />
+{%endfor%}
 </div>
 
 </div><hr />
