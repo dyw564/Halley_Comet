@@ -27,5 +27,6 @@ class Test_Index(unittest.TestCase):
     def test_details(self):
         response = self.client.get('/index/')
 
-        self.assertEqual(response.status_code,200)
-        self.assertEqual(len(response.context['user_data']),2)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['user_data']), 2)
+
