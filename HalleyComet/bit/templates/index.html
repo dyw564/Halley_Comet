@@ -12,9 +12,12 @@
 <div class="main">
 	<div id="header">
     <div style="float:right" >
-        <a href="/regist/" >注册</a>
+        {% if user.username %}
+        {{user.username}}<a href="/userlogout/">注销</a>
+        {% else %}
+        <a href="/userregist/" >注册</a>
         <a href="/login/" >登录</a>
-        {{user.username}}
+        {% endif %}
     </div>
 	<div style="float:left;" ><img src="/static/t.jpg" height="60px;"/></div>
 	<div style="margin-left:140px;" >

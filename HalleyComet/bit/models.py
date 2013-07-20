@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 class Url(models.Model):
     long_url = models.CharField(max_length=200)
-    short_url = models.CharField(max_length=100)
+    short_url = models.CharField(max_length=30)
     visit_time = models.DateTimeField(auto_now_add=True)
     users = models.ManyToManyField(User)
 
