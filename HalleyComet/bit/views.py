@@ -21,7 +21,7 @@ def index(req):
 		        short_url = db_url[0].short_url
             else:
                 short_url = shortTo(long_url)
-            return render_to_response('index.html', {'lu':lu, 'short_url':short_url, 'long_url':long_url})
+            return render_to_response('index.html', {'lu': lu, 'short_url': short_url, 'long_url': long_url})
     else:
         lu = UrlForm()
     return render_to_response('index.html', {'lu':lu})
