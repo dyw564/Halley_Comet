@@ -1,7 +1,7 @@
 #-*-coding:utf8-*-
 from bit.models import Url
-def judgment(lu):
-    long_url = lu.cleaned_data["long_url"]
+def judgment(long_url):
+#    long_url = lu.cleaned_data["long_url"]
     if long_url[:4] != "http":
         long_url = "http://" + long_url
     return long_url 

@@ -15,7 +15,8 @@ def index(req):
         if lu.is_valid():
             #判断长url是否有http://
             #judgment(lu)
-            long_url = judgment(lu)             
+            long_url = lu.cleaned_data["long_url"]
+            long_url = judgment(long_url)             
             db_url = Url.objects.filter(long_url__exact=long_url)
             if db_url:
 		        short_url = db_url[0].short_url
