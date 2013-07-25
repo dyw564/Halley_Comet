@@ -7,11 +7,11 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 from bit.models import Url
-from bit.def_url import short_to_long,long_to_short
+from bit.def_url import short_to_long, long_to_short
 
 class SimpleTest(TestCase):
     def test_basic_addtion(self):
-       self.assertEqual(1 + 1, 2)
+        self.assertEqual(1 + 1, 2)
    
 
     def setUp(self):
