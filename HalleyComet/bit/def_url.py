@@ -28,12 +28,10 @@ def long_to_short(long_url):
         while len(short_url) < 6:
             short_url = "a" + short_url
     
-        short_url = "localhost/" + short_url
         db_url.update(short_url=short_url)
     return short_url
 
-def short_to_long(short_hash):
-    short_url = "localhost/%s" % short_hash
+def short_to_long(short_url):
     long_url = Url.objects.filter(short_url__exact=short_url)
     full_long_url = long_url[0].long_url
     return full_long_url
