@@ -10,6 +10,6 @@ install:
  - pip install -r pip-req.txt --use-mirrors
 
 script:
- - python HalleyComet/manage.py test SimpleTest
+ - python ./HalleyComet/manage.py test SimpleTest
 
 
