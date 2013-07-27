@@ -9,7 +9,7 @@ env:
 install:
  - pip install -r pip-req.txt --use-mirrors
 
-srcipt:
+script:
  - python manage.py test status.SimpleTest
 
 
