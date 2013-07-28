@@ -21,6 +21,7 @@
 <div id="content">
 <div id="searchinfo" >
 	<form method="post" >
+    {% csrf_token %}
 	{{lu.as_p}}
 	<input id="searchbtn" type="submit" value="缩短" />
 	</form>
@@ -29,7 +30,8 @@
 <div id="returninfo">
 <h3>缩短以后的域名：</h3><br />
 
-<div id="nowinfo"><a  id="js_get_short_url" href="{{long_url}}" >{{short_url}}</a></div>
+<div id="nowinfo"><a  id="js_get_short_url" href="http://{{long_url}}" >{{short_url}}</a></div>
+
 
 <div>
 <input id="J_copy_clipboard_data" type="button" value="copy" />

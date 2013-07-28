@@ -1,8 +1,9 @@
-from django.http import HttpResponse,HttpResponseRedirect
-from django.shortcuts import render_to_response 
+#-*-coding:utf8-*-
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django import forms
 from bit.models import Url
-import hashlib
+from bit.def_url import short_to_long, long_to_short
 
 class UrlForm(forms.Form):
     long_url = forms.CharField(max_length=200)
@@ -12,24 +13,14 @@ def index(req):
         lu = UrlForm(req.POST)
         if lu.is_valid():
             long_url = lu.cleaned_data["long_url"]
-            db_url = Url.objects.filter(long_url__exact = long_url)
-            if db_url:
-		short_url = db_url[0].short_url
-            else:
-                longx_url = hashlib.md5(long_url).hexdigest()
-                short_url = "localhost:8000/%s"%longx_url[0:8]
-                url= Url.objects.create(long_url = long_url,short_url = short_url)
-                if long_url[:4] != 'http':
-                    long_url = 'http://'+long_url
-            return render_to_response('index.html',{'lu': lu, 'short_url': short_url, 'long_url': long_url})
+            short_url = long_to_short(long_url)
+            return render(req, 'index.html', {'lu': lu, 'short_url': short_url, 'long_url': long_url})
     else:
         lu = UrlForm()
-    return render_to_response('index.html',{'lu': lu})
+    return render(req, 'index.html', {'lu':lu}) 
 
-def turn(req,short_hash):
-    short = "localhost:8000/%s" % short_hash
-    long_url = Url.objects.filter(short_url__exact = short)
-    full_long_url= long_url[0].long_url
-    if full_long_url[0:4] != "http":
-    	full_long_url = "http://"+full_long_url
+def turn(req, short_hash):
+    full_long_url = short_to_long(short_hash)
     return HttpResponseRedirect(full_long_url)
+
+
