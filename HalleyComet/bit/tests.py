@@ -7,8 +7,18 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 from bit.models import Url
 from bit.def_url import short_to_long, long_to_short
+from django.utils import unittest
+from django.test.client import Client 
 
-class SimpleTest(TestCase):
+class Web_Test(unittest.TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_index(self):
+        response = self.client.get("/index/")
+        self.assertEqual(response.status_code, 200)
+    
+class Url_Test(TestCase):            
     def setUp(self):
         '''
             创建数据对象
